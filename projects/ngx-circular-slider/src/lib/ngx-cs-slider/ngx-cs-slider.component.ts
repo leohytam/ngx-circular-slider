@@ -48,7 +48,7 @@ export class NgxCircularSliderComponent
   public segments: ISegment[];
   public start: IArc;
   public stop: IArc;
-  private startSubscription: Subscription;
+//   private startSubscription: Subscription;
   private stopSubscription: Subscription;
   private circleCenterX: number;
   private circleCenterY: number;
@@ -114,21 +114,21 @@ export class NgxCircularSliderComponent
       fromEvent(document, "touchend")
     );
 
-    this.startSubscription = merge(
-      fromEvent(this.startIcon.nativeElement, "touchstart"),
-      fromEvent(this.startIcon.nativeElement, "mousedown")
-    )
-      .pipe(
-        switchMap(_ =>
-          mouseMove$.pipe(
-            takeUntil(mouseUp$),
-            throttleTime(THROTTLE_DEFAULT)
-          )
-        )
-      )
-      .subscribe((res: MouseEvent | TouchEvent) => {
-        this.handleStartPan(res);
-      });
+//     this.startSubscription = merge(
+//       fromEvent(this.startIcon.nativeElement, "touchstart"),
+//       fromEvent(this.startIcon.nativeElement, "mousedown")
+//     )
+//       .pipe(
+//         switchMap(_ =>
+//           mouseMove$.pipe(
+//             takeUntil(mouseUp$),
+//             throttleTime(THROTTLE_DEFAULT)
+//           )
+//         )
+//       )
+//       .subscribe((res: MouseEvent | TouchEvent) => {
+//         this.handleStartPan(res);
+//       });
 
     this.stopSubscription = merge(
       fromEvent(this.stopIcon.nativeElement, "touchstart"),
@@ -148,10 +148,10 @@ export class NgxCircularSliderComponent
   }
 
   private closeStreams() {
-    if (this.startSubscription) {
-      this.startSubscription.unsubscribe();
-      this.startSubscription = null;
-    }
+//     if (this.startSubscription) {
+//       this.startSubscription.unsubscribe();
+//       this.startSubscription = null;
+//     }
     if (this.stopSubscription) {
       this.stopSubscription.unsubscribe();
       this.stopSubscription = null;
