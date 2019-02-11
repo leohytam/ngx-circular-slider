@@ -313,7 +313,7 @@ export class NgxCircularSliderComponent
   }
 
   public getGradientUrl(index) {
-    return `url(#gradient${index})`;
+    return 'url('+window.location+'#gradient'+index+')';
   }
 
   public getTranslate(): string {
